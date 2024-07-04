@@ -1,0 +1,2 @@
+INDEX VERSION 1.4+C:\MyProgramming\Project_2024_CokunStore\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+110572630.index
