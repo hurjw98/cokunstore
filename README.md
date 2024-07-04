@@ -31,9 +31,9 @@
 
 프로젝트<br>
 └── src<br>
-&nbsp;&nbsp;&nbsp;&nbsp;├── main<br>
-&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├── java<br>
-&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├── aladdinApi<br>
+    ├── main<br>
+    │    ├── java<br>
+    │    │    ├── aladdinApi<br>
 &nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├── $\bf{\color{#DD6565}controller}$<br>
 &nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├── $\bf{\color{#DD6565}dao}$<br>
 &nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├── $\bf{\color{#DD6565}dto}$<br>
