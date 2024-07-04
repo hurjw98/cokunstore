@@ -1,6 +1,6 @@
 # 📌 SNS와 큐레이팅이 포함된 책 판매 사이트
 
-![ERD](./db.png)
+![image](https://github.com/hurjw98/cokunstore/assets/157206299/1e98e9f8-0c3d-4652-890b-331521171d43)
 
 <br/>
 <br/>
@@ -16,6 +16,12 @@
 ### 1-2. Project Duration & Participants
 
 - 2023.05 ~ 2023.06 (5주, 6인 작업)
+
+<br/>
+
+### 1-3. ERD
+
+![db](https://github.com/hurjw98/cokunstore/assets/157206299/450f8218-7546-4237-93e1-6048b792bab8)
 
 <br/>
 <br/>
