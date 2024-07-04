@@ -24,9 +24,73 @@
 ![db](https://github.com/hurjw98/cokunstore/assets/157206299/450f8218-7546-4237-93e1-6048b792bab8)
 
 <br/>
+
+### 1-4. 폴더 구조
+
+다음은 프로젝트의 폴더 구조입니다. **굵게 표시된 패키지, 폴더, 파일**은 제가 구현한 부분을 나타냅니다.
+
+project
+└── src
+    ├── main
+    │   ├── java
+    │   │   ├── aladdinApi
+    │   │   ├── **controller**
+    │   │   ├── **dao**
+    │   │   ├── **dto**
+    │   │   ├── **filter**
+    │   │   ├── **interceptor**
+    │   │   ├── kr.co.soldesk.beans
+    │   │   ├── kr.co.soldesk.config
+    │   │   ├── kr.co.soldesk.controller
+    │   │   ├── kr.co.soldesk.dao
+    │   │   ├── kr.co.soldesk.interceptor
+    │   │   ├── kr.co.soldesk.mapper
+    │   │   ├── kr.co.soldesk.service
+    │   │   ├── kr.co.soldesk.Social
+    │   │   ├── kr.co.soldesk.validator
+    │   │   ├── kr.co.soldesk.youtube
+    │   │   ├── **mapper**
+    │   │   ├── naverApi
+    │   │   ├── **service**
+    │   ├── webapp
+    │       ├── META-INF
+    │       ├── resources
+    │       ├── WEB-INF
+    │       │   ├── lib
+    │       │   ├── properties
+    │       │   ├── views
+    │       │       ├── **admin (관리자 페이지)**
+    │       │       ├── **admin_include**
+    │       │       ├── board
+    │       │       ├── books
+    │       │       ├── cart
+    │       │       ├── include
+    │       │       ├── **notice (유저 공지사항 페이지)**
+    │       │       ├── order
+    │       │       ├── review
+    │       │       ├── **search (책 통합 검색 페이지)**
+    │       │       ├── sns
+    │       │       ├── user
+    │       │       ├── **chat.jsp (챗봇 페이지)**
+    │       │       ├── main.jsp
+    ├── test
+    ├── JRE System Library [JavaSE-14]
+    ├── Maven Dependencies
+    ├── Server Runtime [Apache Tomcat v9.0]
+    ├── target
+    ├── pom.xml
+
+
+<br/>
 <br/>
 
 ## 2. Skills
+
+<br>
+- IDE : 
+
+![Eclipse](https://img.shields.io/badge/Eclipse-FE7A16.svg?style=for-the-badge&logo=Eclipse&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
 <br>
 - Frontend : 
@@ -67,13 +131,13 @@
 
 1. [관리자 페이지](#3-1-admin-page)
 2. [사용자 공지사항 게시판](#3-2-user-notice-board)
-3. [챗봇 페이지](#3-3-chatbot-page)
+3. [책 통합 검색 페이지](#3-3-book-search-page)
+4. [챗봇 페이지](#3-4-chatbot-page)
 
 <br/>
 
 ### 3-1. Admin Page
 
-#### (1) CRUD 기능
 데이터베이스의 테이블에 대해 생성(Create), 조회(Read), 수정(Update), 삭제(Delete) 기능을 구현했습니다. 이를 위해 Spring MVC와 MyBatis를 사용하여 데이터베이스와 연동하였습니다.
 
 ```java
@@ -112,9 +176,7 @@ public interface QnAMapper_admin {
 
 <br/>
 
-#### (2) 검색 기능
-
-Spring MVC와 MyBatis를 활용하여 관리자 페이지에서 데이터를 효율적으로 검색할 수 있도록 구현했습니다. MyBatis의 동적 SQL을 사용하여 다양한 검색 조건을 처리했습니다.
+Spring MVC와 MyBatis를 활용하여 관리자 페이지에서 데이터를 효율적으로 검색하고, 정렬하며, 페이징 기능을 구현했습니다. MyBatis의 동적 SQL을 사용하여 다양한 검색 조건을 처리하고, 각 컬럼 헤더를 클릭하여 정렬할 수 있도록 했습니다. 페이징 기능을 통해 한 페이지에 표시할 데이터 수를 제한하고, 페이지 번호를 클릭하면 해당 페이지의 데이터만 조회되도록 했습니다.
 
 ```java
 // QnAMapper_admin.java
@@ -173,55 +235,392 @@ public interface QnAMapper_admin {
 }
 
 ```
+<br/>
+
+QnAFilterDTO_admin.java는 다양한 검색, 정렬, 페이징 조건을 설정하기 위한 DTO 클래스입니다. 여기서는 주요 필터 조건만 다룹니다.
+
+```java
+// QnAFilterDTO_admin.java
+package filter;
+
+public class QnAFilterDTO_admin {
+    // 페이징 조건
+    private int offset;
+    private int pageSize;
+    
+    // QnAComment 필터 기준
+    private Integer board_id;
+    private Integer user_idx;
+    private String board_content;
+    private String startDate;
+    private String endDate;
+    private Integer minViews;
+    private Integer maxViews;
+    private String board_title;
+    private Integer board_info_idx;
+    private Integer qna_idx;
+    private Integer admin_idx;
+    private String qna_comment;
+    private String qna_startDate;
+    private String qna_endDate;
+    
+    // QnAComment 정렬 기준
+    private String boardIdOrder;
+    private String userIdxOrder;
+    private String contentOrder;
+    private String dateOrder;
+    private String viewsOrder;
+    private String titleOrder;
+    private String boardInfoIdxOrder;
+    private String picOrder;
+    private String qnaIdOrder;
+    private String adminIdxOrder;
+    private String qnaCommentOrder;
+    private String qnaDateOrder;
+
+    // Getters and Setters
+}
+```
+
+<br/>
+
+BoardController_2_admin.java는 QnA 관리 기능을 제공하는 컨트롤러 클래스입니다. 이 클래스는 검색, 정렬, 페이징 기능을 제공하는 메서드를 포함합니다.
+
+```java
+// BoardController_2_admin.java
+package controller;
+
+import dto.QnADTO_admin;
+import filter.QnAFilterDTO_admin;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import service.QnAService_admin;
+
+import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.Locale;
+import java.text.DateFormatSymbols;
+
+@Controller
+@RequestMapping("/admin/board/2")
+public class BoardController_2_admin {
+
+    @Autowired
+    private QnAService_admin qnaService;
+
+    @GetMapping("/manage")
+    public String manageBoards(@RequestParam(value = "page", defaultValue = "1") int page,
+                               @RequestParam(value = "search", required = false) String search,
+                               @RequestParam(value = "sort", required = false) String sort,
+                               @RequestParam(value = "pageChange", required = false) String pageChange,
+                               Model model,
+                               HttpSession session) {
+        QnAFilterDTO_admin filter = (QnAFilterDTO_admin) session.getAttribute("boardFilter2");
+        if (filter == null || (search == null && sort == null && pageChange == null)) {
+            filter = new QnAFilterDTO_admin();
+            session.setAttribute("boardFilter2", filter);
+        }
+
+        filter.setBoard_info_idx(2); // QnA 게시판으로 설정
+
+        int pageSize = 10;
+        int paginationCnt = 10;
+        int offset = (page - 1) * pageSize;
+        filter.setOffset(offset);
+        filter.setPageSize(pageSize);
+
+        List<QnADTO_admin> boardList = qnaService.getQnAsByFilterAndSort(filter);
+        int totalBoards = qnaService.getQnACountByFilter(filter);
+        PageBean_admin pageBean = new PageBean_admin(totalBoards, page, pageSize, paginationCnt);
+
+        // 날짜 형식 변환
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd (E)", new DateFormatSymbols(Locale.KOREAN));
+        for (QnADTO_admin board : boardList) {
+            try {
+                board.setFormattedDate(outputFormat.format(inputFormat.parse(board.getBoard_date())));
+                board.setHasAnswer(qnaService.isAnswered(board.getBoard_id()));
+                if (board.getQna_comment_date() != null) {
+                    board.setFormattedQnaCommentDate(outputFormat.format(inputFormat.parse(board.getQna_comment_date())));
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", pageBean.getPageCnt());
+        model.addAttribute("filter", filter);
+        model.addAttribute("pageBean", pageBean);
+
+        return "admin/board/2/manage";
+    }
+
+    @PostMapping("/search")
+    public String searchBoards(
+            @RequestParam(required = false) Integer board_id,
+            @RequestParam(required = false) Integer user_idx,
+            @RequestParam(required = false) String board_content,
+            @RequestParam(required = false) String startDate,
+            @RequestParam(required = false) String endDate,
+            @RequestParam(required = false) Integer minViews,
+            @RequestParam(required = false) Integer maxViews,
+            @RequestParam(required = false) String board_title,
+            @RequestParam(required = false) Integer qna_idx,
+            @RequestParam(required = false) Integer admin_idx,
+            @RequestParam(required = false) String qna_comment,
+            @RequestParam(required = false) String qna_startDate,
+            @RequestParam(required = false) String qna_endDate,
+            @RequestParam String returnJSP,
+            @ModelAttribute QnAFilterDTO_admin filter,
+            HttpSession session) {
+
+        filter.setBoard_id(board_id);
+        filter.setUser_idx(user_idx);
+        filter.setBoard_content(board_content);
+        filter.setStartDate(startDate);
+        filter.setEndDate(endDate);
+        filter.setMinViews(minViews);
+        filter.setMaxViews(maxViews);
+        filter.setBoard_title(board_title);
+        filter.setQna_idx(qna_idx);
+        filter.setAdmin_idx(admin_idx);
+        filter.setQna_comment(qna_comment);
+        filter.setQna_startDate(qna_startDate);
+        filter.setQna_endDate(qna_endDate);
+        filter.setBoard_info_idx(2); // QnA 게시판으로 설정
+
+        session.setAttribute("boardFilter2", filter);
+
+        return "redirect:/admin/board/2/manage?page=1&search=true";
+    }
+
+    @GetMapping("/sort")
+    public String sortBoards(@RequestParam("sortField") String sortField,
+                             @RequestParam String returnJSP, HttpSession session) {
+        QnAFilterDTO_admin filter = (QnAFilterDTO_admin) session.getAttribute("boardFilter2");
+
+        if (filter != null) {
+            switch (sortField) {
+                case "boardId":
+                    filter.setBoardIdOrder(toggleOrder(filter.getBoardIdOrder()));
+                    break;
+                case "userIdx":
+                    filter.setUserIdxOrder(toggleOrder(filter.getUserIdxOrder()));
+                    break;
+                case "content":
+                    filter.setContentOrder(toggleOrder(filter.getContentOrder()));
+                    break;
+                case "date":
+                    filter.setDateOrder(toggleOrder(filter.getDateOrder()));
+                    break;
+                case "views":
+                    filter.setViewsOrder(toggleOrder(filter.getViewsOrder()));
+                    break;
+                case "title":
+                    filter.setTitleOrder(toggleOrder(filter.getTitleOrder()));
+                    break;
+                case "boardInfoIdx":
+                    filter.setBoardInfoIdxOrder(toggleOrder(filter.getBoardInfoIdxOrder()));
+                    break;
+                case "picOrder":
+                    filter.setPicOrder(toggleOrder(filter.getPicOrder()));
+                    break;
+                case "qnaId":
+                    filter.setQnaIdOrder(toggleOrder(filter.getQnaIdOrder()));
+                    break;
+                case "adminIdx":
+                    filter.setAdminIdxOrder(toggleOrder(filter.getAdminIdxOrder()));
+                    break;
+                case "qnaComment":
+                    filter.setQnaCommentOrder(toggleOrder(filter.getQnaCommentOrder()));
+                    break;
+                case "qnaDate":
+                    filter.setQnaDateOrder(toggleOrder(filter.getQnaDateOrder()));
+                    break;
+                default:
+                    break;
+            }
+            session.setAttribute("boardFilter2", filter);
+        }
+
+        return "redirect:/admin/board/2/manage?page=1&sort=true";
+    }
+
+    private String toggleOrder(String currentOrder) {
+        if (currentOrder == null) {
+            return "asc";
+        } else if ("asc".equals(currentOrder)) {
+            return "desc";
+        } else {
+            return null;
+        }
+    }
+}
+```
+#### (1) CRUD 기능
+
 
 <br/>
 
 #### (2) 검색 기능
 
-```java
 
-```
+<br/>
+
+#### (3) 정렬 기능
+
+
+<br/>
+
+#### (4) 페이징 기능
+
+
+<br/><br/>
 
 ### 3-2. User Notice Board
-사용자는 점수 변경 기록을 확인하고 개별 기록을 삭제할 수 있습니다. 기록은 팀명, 팀원, 변경된 점수, 날짜 및 시간으로 구성되어 있습니다.
 
+사용자가 공지사항의 제목과 내용으로 검색할 수 있는 기능을 구현했습니다. MyBatis를 사용하여 검색 쿼리를 작성하고, Spring MVC를 통해 검색 결과를 처리했습니다. 최신순, 오래된 순으로 공지사항을 정렬할 수 있도록 했으며, 페이징 기능을 통해 공지사항 목록을 페이지별로 나누어 보여주었습니다.
+
+#### (1) 검색 기능
+
+
+<br/>
+
+#### (2) 정렬 기능
+
+
+<br/>
+
+#### (3) 페이징 기능
+
+
+
+<br/><br/>
+
+
+### 3-3. Book Search Page
+
+사용자가 책을 제목이나 저자명, 카테고리, 출판사 등 다양한 조건으로 검색할 수 있는 기능을 구현했습니다. Spring MVC와 MyBatis를 활용하여 검색 쿼리를 작성하고, 검색 결과를 처리했습니다.
+
+#### (1) 통합 검색 기능
+
+
+<br/>
+
+#### (2) 상세 검색 기능
+
+
+
+<br/><br/>
+
+### 3-4. Chatbot Page
+
+사용자가 쉽게 접근할 수 있는 대화형 인터페이스를 구현했습니다. JavaScript를 사용하여 실시간으로 사용자 입력을 처리하고, 응답을 표시합니다.자주 묻는 질문에 대한 자동 응답 기능을 제공하여 사용자의 질문에 빠르게 답변할 수 있도록 했습니다. 이는 ChatGPT OpenAPI를 통해 구현되었습니다. 추가 튜닝은 Python으로 update, tuning, check 스크립트를 각각 구현하여 콘솔을 통해 학습시켰습니다.
+
+ChatGptService.java는 ChatGPT OpenAPI를 사용하여 사용자의 입력(prompt)에 대한 응답(response)을 가져오는 서비스 클래스입니다. HTTP 요청을 통해 OpenAPI 서버와 통신합니다.
 
 ```java
+// ChatGptService.java
+package service;
 
-```
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 
-<br/>
+@Service
+public class ChatGptService {
+    @Value("${openai.api.key}")
+    private String apiKey;
 
-### 3-3. Chatbot Page
-사용자는 모든 점수 변경 기록을 삭제할 수 있습니다. 이때, 모든 기록이 삭제되며, 삭제된 기록에 해당하는 점수 변경도 복구됩니다.
+    @Value("${openai.model}")
+    private String model;
 
+    private final RestTemplate restTemplate;
+    private final ObjectMapper objectMapper;
 
-```java
+    public ChatGptService(RestTemplate restTemplate, ObjectMapper objectMapper) {
+        this.restTemplate = restTemplate;
+        this.objectMapper = objectMapper;
+    }
 
-```
+    public String getChatGptResponse(String prompt) throws Exception {
+        String url = "https://api.openai.com/v1/chat/completions";
 
-<br/>
-<br/>
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(apiKey);
 
-## 4. UI/UX
+        ObjectNode message = objectMapper.createObjectNode();
+        message.put("role", "user");
+        message.put("content", prompt);
 
-### 4-1. Responsive Web
-팀 점수 관리 웹 페이지는 화면 크기에 따라 유동적으로 사이즈가 조절됩니다.
+        ObjectNode requestBody = objectMapper.createObjectNode();
+        requestBody.put("model", model);
+        requestBody.set("messages", objectMapper.createArrayNode().add(message));
+        requestBody.put("max_tokens", 1024);
 
-```css
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
+        HttpEntity<String> entity = new HttpEntity<>(requestBody.toString(), headers);
 
-  .scoreChangeContainer, .teamButtons, .scoreLog {
-    width: 100%;
-    margin-bottom: 20px;
-  }
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
+
+        ObjectNode jsonResponse = objectMapper.readValue(response.getBody(), ObjectNode.class);
+        return jsonResponse.get("choices").get(0).get("message").get("content").asText().trim();
+    }
 }
+
 ```
 <br/>
+ChatController.java는 사용자의 입력을 받아 ChatGptService를 통해 응답을 처리하는 컨트롤러 클래스입니다.
 <br/>
+
+```java
+// ChatController.java
+package controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import service.ChatGptService;
+
+@Controller
+public class ChatController {
+
+    @Autowired
+    private ChatGptService chatGptService;
+
+    @GetMapping("/chat")
+    public String chat(@RequestParam(name="prompt", required=false) String prompt, Model model) {
+        if (prompt != null && !prompt.isEmpty()) {
+            String response = chatGptService.getChatGptResponse(prompt);
+            model.addAttribute("response", response);
+        }
+        return "chat";
+    }
+}
+
+```
+<br/>
+
+
+
+
+<br/><br/>
+
 
 [맨위로 이동하기](#-SNS와-큐레이팅이-포함된-책-판매-사이트)
 
