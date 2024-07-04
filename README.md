@@ -418,38 +418,40 @@ public class BoardController_2_admin {
 ```
 #### (1) CRUD 기능
 
-- 생성(Create)
-
+- 생성(Create)<br/>
+![admin02](https://github.com/hurjw98/cokunstore/assets/157206299/7e4ae8aa-c449-4e7c-9d16-492faececdc2)
 
 <br/>
 
-- 조회(Read)
+- 조회(Read)<br/>
 ![admin01](https://github.com/hurjw98/cokunstore/assets/157206299/c4f9c82b-775c-42e2-bf6f-b0cbbaedaf8c)
 
 <br/>
 
-- 수정(Update)
+- 수정(Update)<br/>
+![admin03](https://github.com/hurjw98/cokunstore/assets/157206299/da932289-5cff-4bca-838f-8924a996597d)
 
 
 <br/>
 
-- 삭제(Delete)
+- 삭제(Delete)<br/>
+![admin04](https://github.com/hurjw98/cokunstore/assets/157206299/1ab7e422-c855-4320-9e9c-954a7d6b67ad)
 
 
 <br/>
 
 #### (2) 검색 기능
-
+![admin05](https://github.com/hurjw98/cokunstore/assets/157206299/3c8d8cbe-9349-4fae-afe1-93c1e4e36dda)
 
 <br/>
 
 #### (3) 정렬 기능
-
+![admin06](https://github.com/hurjw98/cokunstore/assets/157206299/6c4d41a3-9cd8-4841-be7e-8d7f368d5dbd)
 
 <br/>
 
 #### (4) 페이징 기능
-
+![admin07](https://github.com/hurjw98/cokunstore/assets/157206299/c5afc695-d60e-4aa9-beb3-a56e90fc8a0b)
 
 <br/><br/>
 
@@ -458,18 +460,17 @@ public class BoardController_2_admin {
 사용자가 공지사항의 제목과 내용으로 검색할 수 있는 기능을 구현했습니다. MyBatis를 사용하여 검색 쿼리를 작성하고, Spring MVC를 통해 검색 결과를 처리했습니다. 최신순, 오래된 순으로 공지사항을 정렬할 수 있도록 했으며, 페이징 기능을 통해 공지사항 목록을 페이지별로 나누어 보여주었습니다.
 
 #### (1) 검색 기능
-
+![admin08](https://github.com/hurjw98/cokunstore/assets/157206299/7e616aaa-40a3-483f-965a-6fe1a041dd3a)
 
 <br/>
 
 #### (2) 정렬 기능
-
+![admin09](https://github.com/hurjw98/cokunstore/assets/157206299/7c5be3d9-8e85-41ab-8850-8dbb3cbb8ed3)
 
 <br/>
 
 #### (3) 페이징 기능
-
-
+![admin10](https://github.com/hurjw98/cokunstore/assets/157206299/34294c55-67da-4cd8-83e9-6208e7a63d5f)
 
 <br/><br/>
 
@@ -478,14 +479,9 @@ public class BoardController_2_admin {
 
 사용자가 책을 제목이나 저자명, 카테고리, 출판사 등 다양한 조건으로 검색할 수 있는 기능을 구현했습니다. Spring MVC와 MyBatis를 활용하여 검색 쿼리를 작성하고, 검색 결과를 처리했습니다.
 
-#### (1) 통합 검색 기능
-
-
 <br/>
 
-#### (2) 상세 검색 기능
-
-
+![admin11](https://github.com/hurjw98/cokunstore/assets/157206299/58ebdc47-5c11-49fd-9939-5e2934645e7e)
 
 <br/><br/>
 
@@ -586,7 +582,7 @@ public class ChatController {
 ```
 <br/>
 
-
+![chatbot](https://github.com/hurjw98/cokunstore/assets/157206299/d22cce38-ef71-4f23-96f3-2dbe81811230)
 
 
 <br/><br/>
