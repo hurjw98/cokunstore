@@ -29,10 +29,10 @@
 
 다음은 프로젝트의 폴더 구조입니다. **굵게 표시된 패키지, 폴더, 파일**은 제가 구현한 부분을 나타냅니다.
 
-project
-└── src
-    ├── main
-    │   ├── java
+project<br/>
+└── src<br/>
+    ├── main<br/>
+    │   ├── java<br/>
     │   │   ├── aladdinApi
     │   │   ├── **controller**
     │   │   ├── **dao**
