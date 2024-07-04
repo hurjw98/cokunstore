@@ -55,12 +55,6 @@
 ![Apache Tomcat](https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black)
 
 <br/>
-- **Frontend:** HTML, CSS, JavaScript, jQuery, Bootstrap
-- **Backend:** Spring, MyBatis, Java
-- **Database:** Oracle
-- **API:** OpenAI ChatGPT
-
-<br/>
 <br/>
 
 ## 3. Main Features
