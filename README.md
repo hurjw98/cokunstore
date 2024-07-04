@@ -237,53 +237,6 @@ public interface QnAMapper_admin {
 ```
 <br/>
 
-QnAFilterDTO_admin.java는 다양한 검색, 정렬, 페이징 조건을 설정하기 위한 DTO 클래스입니다. 여기서는 주요 필터 조건만 다룹니다.
-
-```java
-// QnAFilterDTO_admin.java
-package filter;
-
-public class QnAFilterDTO_admin {
-    // 페이징 조건
-    private int offset;
-    private int pageSize;
-    
-    // QnAComment 필터 기준
-    private Integer board_id;
-    private Integer user_idx;
-    private String board_content;
-    private String startDate;
-    private String endDate;
-    private Integer minViews;
-    private Integer maxViews;
-    private String board_title;
-    private Integer board_info_idx;
-    private Integer qna_idx;
-    private Integer admin_idx;
-    private String qna_comment;
-    private String qna_startDate;
-    private String qna_endDate;
-    
-    // QnAComment 정렬 기준
-    private String boardIdOrder;
-    private String userIdxOrder;
-    private String contentOrder;
-    private String dateOrder;
-    private String viewsOrder;
-    private String titleOrder;
-    private String boardInfoIdxOrder;
-    private String picOrder;
-    private String qnaIdOrder;
-    private String adminIdxOrder;
-    private String qnaCommentOrder;
-    private String qnaDateOrder;
-
-    // Getters and Setters
-}
-```
-
-<br/>
-
 BoardController_2_admin.java는 QnA 관리 기능을 제공하는 컨트롤러 클래스입니다. 이 클래스는 검색, 정렬, 페이징 기능을 제공하는 메서드를 포함합니다.
 
 ```java
@@ -464,6 +417,23 @@ public class BoardController_2_admin {
 }
 ```
 #### (1) CRUD 기능
+
+- 생성(Create)
+
+
+<br/>
+
+- 조회(Read)
+![admin01](https://github.com/hurjw98/cokunstore/assets/157206299/c4f9c82b-775c-42e2-bf6f-b0cbbaedaf8c)
+
+<br/>
+
+- 수정(Update)
+
+
+<br/>
+
+- 삭제(Delete)
 
 
 <br/>
