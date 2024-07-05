@@ -13,6 +13,35 @@
 
 <br/>
 
+![image](https://github.com/hurjw98/cokunstore/assets/157206299/a7dec159-c62d-46ec-9a90-fe153648e4b4)
+
+<br/>
+
+메인 페이지와 카테고리 페이지는 다음과 같습니다.
+
+<br/>
+
+![image](https://github.com/hurjw98/cokunstore/assets/157206299/1e9b0a3b-5cc1-4a73-a3d5-aca65775e218)
+
+<br/>
+
+책 상세 페이지는 다음과 같습니다. 책 정보와 책 관련 상품과 유튜브 정보는 api를 통해 가져왔습니다.
+
+<br/>
+
+![image](https://github.com/hurjw98/cokunstore/assets/157206299/fadb5b47-081e-4ae7-80ad-a176156953ca)
+
+
+<br/>
+
+리뷰 페이지와 SNS 페이지는 다음과 같습니다.
+
+<br/>
+
+![image](https://github.com/hurjw98/cokunstore/assets/157206299/b837a07d-97c0-47f8-a998-cb801d8a9d13)
+
+<br/>
+
 ### 1-2. Project Duration & Participants
 
 - 2023.05 ~ 2023.06 (5주, 6인 작업)
